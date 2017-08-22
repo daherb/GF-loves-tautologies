@@ -33,4 +33,4 @@ main =
     let (s,newRnd) = generate pgf rnd
 
     putStrLn s
---    either putStrLn (\c -> tweet c s >>= putStrLn . unpack . responseBody >> return () ) conf
+    either putStrLn (\c -> tweet c s >>= putStrLn . unpack . responseBody >> return () ) conf
