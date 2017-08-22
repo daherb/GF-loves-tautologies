@@ -1,8 +1,6 @@
 import PGF
 import System.Random
 import System.IO
-import Data.Time.Clock.POSIX
-import System.CPUTime
 import Twitter
 import Network.HTTP.Client
 import Data.ByteString.Lazy.Char8 hiding (putStrLn, length, head)
@@ -31,11 +29,8 @@ main =
   do
     pgf <- readPGF "gf/Tautology.pgf"
     conf <- configFromFile "config.json"
-    time <- round `fmap` getPOSIXTime
-    cpuptime <- getCPUTime
-    let cputime = cpuptime `div` 100000000
-    let rnd = mkStdGen (fromInteger (toInteger (time + cputime) ) )
+    rnd <- getStdGen
     let (s,newRnd) = generate pgf rnd
 
     putStrLn s
-    either putStrLn (\c -> tweet c s >>= putStrLn . unpack . responseBody >> return () ) conf
+--    either putStrLn (\c -> tweet c s >>= putStrLn . unpack . responseBody >> return () ) conf
