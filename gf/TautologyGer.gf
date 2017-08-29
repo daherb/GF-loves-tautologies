@@ -2,8 +2,8 @@
 concrete TautologyGer of Tautology = CatGer, LexiconGer ** TautologyI with (Cat=CatGer),(Lexicon=LexiconGer),(Syntax=SyntaxGer) ** open ParadigmsGer, Prelude, SyntaxGer, ExtensionsGer, ResGer in {
   lin
     PrepAdv prep np = lin NP {s = prep.s ++ np.s ! prep.c; } ; --mkAdv prep np2 ;
-    member_N = regN "Mitglied" ;
-    tautology_N = regN "Tautologie" ;
+    member_N = reg1N "Mitglied" Neutr ;
+    tautology_N = reg1N "Tautologie" Fem ;
     club_N = regN "Klub" ;
     of_Prep = mkPrep "" (NPC Gen);
 }
