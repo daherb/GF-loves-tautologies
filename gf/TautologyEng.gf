@@ -2,10 +2,6 @@
 concrete TautologyEng of Tautology = CatEng, LexiconEng ** TautologyI with (Cat=CatEng),(Lexicon=LexiconEng),(Syntax=SyntaxEng) ** open Prelude, SyntaxEng, ParadigmsEng, (R=ResEng), ExtensionsEng in {
   lin
     PrepAdv prep np = lin NP {s = prep.s ++ np.s ! ResEng.NPAcc; } ; --mkAdv prep np2 ;
-    member_N = mkN "member" ;
-    tautology_N = mkN "tautology" ;
-    club_N = mkN "club" ;
-    of_Prep = mkPrep "of" ;
     Taut2 cl = ss ("it is not the case that" ++ (mkS and_Conj (mkS presentTense positivePol cl) (mkS presentTense negativePol cl)).s) ;
     Taut3 cl = let s = mkS cl in mkS if_then_Conj s s ;
     Taut4a cl = let s = mkS cl in mkS iff_Conj s (mkS or_Conj s s) ;
@@ -35,6 +31,10 @@ concrete TautologyEng of Tautology = CatEng, LexiconEng ** TautologyI with (Cat=
     --   mkS iff_Conj (mkS or_Conj s1 (mkS and_Conj s2 s3)) (mkS and_Conj (mkS or_Conj s1 s2) (mkS or_Conj s1 s3)) ;
    
     iff_Conj = P.mkConj "if and only if" ;
+    member_N = P.mkN "member" ;
+    tautology_N = P.mkN "tautology" ;
+    club_N = P.mkN "club" ;
+    of_Prep = P.mkPrep "of" ;
     
   oper
     neg_Adv : Adv = P.mkAdv "it is not the case that" ;

@@ -2,10 +2,6 @@
 concrete TautologyGer of Tautology = CatGer, LexiconGer ** TautologyI with (Cat=CatGer),(Lexicon=LexiconGer),(Syntax=SyntaxGer) ** open ParadigmsGer, Prelude, SyntaxGer, ExtensionsGer, ResGer in {
   lin
     PrepAdv prep np = lin NP {s = prep.s ++ np.s ! prep.c; } ; --mkAdv prep np2 ;
-    member_N = reg1N "Mitglied" Neutr ;
-    tautology_N = reg1N "Tautologie" Fem ;
-    club_N = regN "Klub" ;
-    of_Prep = mkPrep "" (NPC Gen);
     Taut2 cl =
       let s1 : { s : Order => Str } = { s = \\_ => (mkS presentTense positivePol cl).s ! Sub } in
       let s2 : { s : Order => Str } = { s = \\_ => (mkS presentTense negativePol cl).s ! Sub } in
@@ -57,4 +53,9 @@ concrete TautologyGer of Tautology = CatGer, LexiconGer ** TautologyI with (Cat=
     --   let s3 = mkS cl3 in
     --   mkS iff_Conj (mkS or_Conj s1 (mkS and_Conj s2 s3)) (mkS and_Conj (mkS or_Conj s1 s2) (mkS or_Conj s1 s3)) ;
     iff_Conj = {s1 = "genau dann wenn" ; s2 = "dann" ; n = Sg} ;
+    member_N = P.reg1N "Mitglied" Neutr ;
+    tautology_N = P.reg1N "Tautologie" Fem ;
+    club_N = P.regN "Klub" ;
+    of_Prep = P.mkPrep "" (NPC Gen);
+    
 }
