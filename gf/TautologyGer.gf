@@ -1,7 +1,41 @@
 --# -path=/home/herb/src/foreign/GF.git/lib/src/api:/home/herb/src/foreign/GF.git/lib/src/english:.:/home/herb/src/foreign/GF.git/lib/src/translator
-concrete TautologyGer of Tautology = CatGer, LexiconGer ** TautologyI with (Cat=CatGer),(Lexicon=LexiconGer),(Syntax=SyntaxGer) ** open ParadigmsGer, Prelude, SyntaxGer, ExtensionsGer, ResGer in {
+concrete TautologyGer of Tautology = CatGer, LexiconGer-[
+    art_N,
+    blood_N,
+    dust_N,
+    earth_N,
+    fat_N,
+    gold_N,
+    grass_N,
+    guts_N,
+    ice_N,
+    industry_N,
+    iron_N,
+    leather_N,
+    love_N,
+    meat_N,
+    milk_N,
+    music_N,
+    oil_N,
+    peace_N,
+    plastic_N,
+    rain_N,
+    rubber_N,
+    salt_N,
+    sand_N,
+    science_N,
+    sea_N,
+    silver_N,
+    skin_N,
+    smoke_N,
+    snow_N,
+    steel_N,
+    water_N,
+    wind_N,
+    wood_N
+  ] ** TautologyI with (Cat=CatGer),(Lexicon=LexiconGer),(Syntax=SyntaxGer) ** open (P=ParadigmsGer), Prelude, SyntaxGer, ExtensionsGer, ResGer in {
   lin
-    PrepAdv prep np = lin NP {s = prep.s ++ np.s ! prep.c; } ; --mkAdv prep np2 ;
+    PrepAdv prep np = lin Adv {s = prep.s ++ np.s ! prep.c; } ; --mkAdv prep np2 ;
     Taut2 cl =
       let s1 : { s : Order => Str } = { s = \\_ => (mkS presentTense positivePol cl).s ! Sub } in
       let s2 : { s : Order => Str } = { s = \\_ => (mkS presentTense negativePol cl).s ! Sub } in

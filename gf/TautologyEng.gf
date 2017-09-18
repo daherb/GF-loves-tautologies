@@ -1,7 +1,42 @@
 --# -path=/home/herb/src/foreign/GF.git/lib/src/api:/home/herb/src/foreign/GF.git/lib/src/english:.:/home/herb/src/foreign/GF.git/lib/src/translator
-concrete TautologyEng of Tautology = CatEng, LexiconEng ** TautologyI with (Cat=CatEng),(Lexicon=LexiconEng),(Syntax=SyntaxEng) ** open Prelude, SyntaxEng, ParadigmsEng, (R=ResEng), ExtensionsEng in {
+concrete TautologyEng of Tautology = CatEng, LexiconEng-[
+    art_N,
+    blood_N,
+    dust_N,
+    earth_N,
+    fat_N,
+    gold_N,
+    grass_N,
+    guts_N,
+    ice_N,
+    industry_N,
+    iron_N,
+    leather_N,
+    love_N,
+    meat_N,
+    milk_N,
+    music_N,
+    oil_N,
+    peace_N,
+    plastic_N,
+    rain_N,
+    rubber_N,
+    salt_N,
+    sand_N,
+    science_N,
+    sea_N,
+    silver_N,
+    skin_N,
+    smoke_N,
+    snow_N,
+    steel_N,
+    water_N,
+    wind_N,
+    wood_N
+  ] ** TautologyI with (Cat=CatEng),(Lexicon=LexiconEng),(Syntax=SyntaxEng) ** open Prelude, SyntaxEng, (P=ParadigmsEng), (R=ResEng), ExtensionsEng in {
   lin
-    PrepAdv prep np = lin NP {s = prep.s ++ np.s ! ResEng.NPAcc; } ; --mkAdv prep np2 ;
+    PrepAdv prep np = lin Adv {s = prep.s ++ np.s ! ResEng.NPAcc; } ; --mkAdv prep np2 ;
+
     Taut2 cl = ss ("it is not the case that" ++ (mkS and_Conj (mkS presentTense positivePol cl) (mkS presentTense negativePol cl)).s) ;
     Taut3 cl = let s = mkS cl in mkS if_then_Conj s s ;
     Taut4a cl = let s = mkS cl in mkS iff_Conj s (mkS or_Conj s s) ;
