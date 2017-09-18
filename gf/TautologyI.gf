@@ -16,8 +16,10 @@ incomplete concrete TautologyI of Tautology = Cat, Lexicon ** open Prelude, Synt
     Cl6 np n = mkCl np n ; 
     -- Cl7 : NP -> CN -> Cl ;	
     Cl8 np adv = mkCl np adv ; 
+    TautEq np = mkS (mkCl np np) ;
+    Taut1 cl = mkS or_Conj (mkS presentTense positivePol cl) (mkS presentTense negativePol cl) ;
+
     -- PrepAdv prep np = {s = prep.s ++ np.s ! ResEng.NPAcc; } ; --mkAdv prep np2 ;
-    Taut np = mkS (mkCl np np) ;
     -- member_N = mkN "member" ;
     -- tautology_N = mkN "tautology" ;
     -- club_N = mkN "club" ;
