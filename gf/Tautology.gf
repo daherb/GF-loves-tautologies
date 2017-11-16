@@ -51,7 +51,7 @@ abstract Tautology = Cat, Lexicon-[
     PrepAdv : Prep -> NP -> AdvP ;
     Cl1	: NP -> A -> Cl;
     Cl2 : NP -> A -> NP -> Cl;
-    Cl3 : NP -> A2 -> NP -> Cl;
+    -- Cl3 : NP -> A2 -> NP -> Cl;
     -- Cl4 : NP -> AP -> Cl ;
     Cl5 : NP -> NP -> Cl ;
     Cl6 : NP -> N -> Cl ;
