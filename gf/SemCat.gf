@@ -1,0 +1,63 @@
+abstract SemCat = {
+  cat
+    NounClass;
+    AdvClass;
+    A NounClass;
+    A2 NounClass NounClass;
+    Interj;
+    Adv AdvClass;
+    AP NounClass;
+    N NounClass;
+    N2 NounClass NounClass;
+    N3 NounClass NounClass NounClass;
+    NP NounClass;
+    PN;
+    V NounClass;
+    VA NounClass;
+    VQ NounClass;
+    VS NounClass;
+    V2 NounClass NounClass;
+    V2A NounClass NounClass;
+    V2Q NounClass NounClass;
+    V2S NounClass NounClass;
+    V2V NounClass NounClass;
+    V3 NounClass NounClass NounClass ;
+    CompatibleNounClass NounClass NounClass NounClass;
+--    VePhrase;
+  fun
+    animate : NounClass ;
+    inanimate : NounClass ;
+    human : NounClass ;
+    nonhuman : NounClass ;
+    mass : NounClass ;
+    count : NounClass ;
+    masscount : NounClass;
+    general : NounClass ;
+    liquid : NounClass;
+    liquidmass : NounClass;
+    liquidcount : NounClass;
+    liquidmasscount : NounClass;
+    liquidmasscountIsLiquidmass : N liquidmasscount -> N liquidmass;
+    liquidmasscountIsLiquidcount : N liquidmasscount -> N liquidcount;
+    liquidmassIsLiquid : N  liquidmass -> N liquid ;
+    liquidcountIsLiquid : N liquidcount -> N liquid ;
+    liquidIsInanimate : N liquid -> N inanimate;
+    liquidmassIsMass : N liquidmass -> N mass;
+    liquidcoundIsCount : N liquidcount -> N count;
+    humanIsAnimate : N human -> N animate ;
+    massIsInanimate : N mass -> N inanimate ;
+    countIsInanimate : N count -> N inanimate ;
+    masscountIsMass : N masscount -> N mass ;
+    masscountIsCount : N masscount -> N count;
+    inanimateIsCount : N inanimate -> N count;
+    animateIsCount : N animate -> N count;
+    everythingIsGeneral : (c : NounClass) -> N c -> N general ;
+    inanimateIsNonhuman : N inanimate -> N nonhuman ;
+    massIsNonhuman : N mass -> N nonhuman ;
+    countIsNonhuman : N count -> N nonhuman ;
+    liquidIsNonhuma : N liquid -> N nonhuman;
+    sent : AdvClass;
+    verb : AdvClass;
+    sameIsCompatible : (c: NounClass) -> CompatibleNounClass c c c;
+
+}
