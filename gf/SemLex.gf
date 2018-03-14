@@ -1,8 +1,9 @@
 abstract SemLex = SemCat ** {
   fun
+    -- Lexicon
     add_V3 : V3 inanimate inanimate inanimate ;
     airplane_N : N inanimate ;
-    alas_Interj : Interj ;
+    -- alas_Interj : Interj ;
     already_Adv : Adv sent;
     animal_N : N animate;
     answer_V2S : V2S human human;
@@ -64,7 +65,7 @@ abstract SemLex = SemCat ** {
     cold_A : A general;
     come_V : V general;
     computer_N : N general;
-    --correct_A : A ; ???
+    correct_A : A general; -- ???
     country_N : N inanimate;
     count_V2 : V2 human general;
     cousin_N : N human;
@@ -78,7 +79,7 @@ abstract SemLex = SemCat ** {
     doctor_N : N human;
     dog_N : N animate;
     door_N : N inanimate;
-    -- do_V2 : V2 animate ; ???
+    -- do_V2 : V2 animate ; -- ???
     drink_V2 : V2 animate inanimate;
     dry_A : A nonhuman;
     dull_A : A general;
@@ -108,7 +109,7 @@ abstract SemLex = SemCat ** {
     floor_N : N inanimate;
     flower_N : N inanimate; 
     flow_V : V liquid;
-    -- fly_V : V ; ???
+    fly_V : V animate; -- ???
     fog_N : N mass;
     foot_N : N inanimate;
     forest_N : N inanimate;
@@ -141,7 +142,7 @@ abstract SemLex = SemCat ** {
     heavy_A : A general;
     hill_N : N inanimate;
     hit_V2 : V2 human general;
-    -- hold_V2 : V2 ;
+    hold_V2 : V2 human general;
     hope_VS : VS human;
     horn_N : N inanimate;
     horse_N : N animate;
@@ -295,8 +296,8 @@ abstract SemLex = SemCat ** {
     stupid_A : A animate;
     suck_V2 : V2 animate liquid;
     sun_N : N inanimate;
-    -- swell_V : V ;
-    swim_V : V animate;
+    swell_V : V nonhuman ;
+    swim_V : V animate ;
     switch8off_V2 : V2 animate inanimate;
     switch8on_V2 : V2 animate inanimate;
     table_N : N inanimate;
@@ -306,7 +307,7 @@ abstract SemLex = SemCat ** {
     teach_V2 : V2 human animate;
     television_N : N inanimate;
     thick_A : A inanimate;
-    thin_A : A general;
+    thin_A : A human;
     think_V : V human;
     throw_V2 : V2 animate general;
     tie_V2 : V2 human general;
@@ -318,7 +319,7 @@ abstract SemLex = SemCat ** {
     tree_N : N inanimate;
     turn_V : V general;
     ugly_A : A general;
-  -- uncertain_A : A ;
+    -- uncertain_A : A ; -- ???
     understand_V2 : V2 animate general;
     university_N : N inanimate;
     village_N : N inanimate;
@@ -332,7 +333,7 @@ abstract SemLex = SemCat ** {
     water_N : N liquidmass;
     wet_A : A general;
     white_A : A nonhuman;
-    -- wide_A : A ;
+    wide_A : A nonhuman ;
     wife_N : N human;
     wind_N : N masscount ;
     window_N : N inanimate;
@@ -348,4 +349,127 @@ abstract SemLex = SemCat ** {
     year_N : N inanimate;
     yellow_A : A nonhuman;
     young_A : A human;
+
+    -- Structural
+    above_Prep : Prep ;  
+    after_Prep : Prep ;
+    -- all_Predet : Predet ;
+    -- almost_AdA : AdA ;   
+    -- almost_AdN : AdN ;   
+    -- although_Subj : Subj ;
+    -- always_AdV : AdV ;
+    -- and_Conj : Conj ;
+    -- because_Subj : Subj ;
+    before_Prep : Prep ;
+    behind_Prep : Prep ;
+    between_Prep : Prep ;
+    -- both7and_DConj : Conj ; -- both...and
+  ---b  both7and_DConj : DConj ;
+    -- but_PConj : PConj ;
+    by8agent_Prep : Prep ; -- by (agent)
+    by8means_Prep : Prep ; -- by (means of)
+    can8know_VV : VV human ; -- can (capacity)
+    can_VV : VV human ;      -- can (possibility)
+    during_Prep : Prep ;
+    -- either7or_DConj : Conj ; -- either...or
+  ---b  either7or_DConj : DConj ;
+    every_Det : Det general;
+    everybody_NP : NP human ;  -- everybody
+    everything_NP : NP human ;
+    everywhere_Adv : Adv verb;
+  ---  first_Ord : Ord ; DEPRECATED
+    few_Det : Det nonmass;
+    for_Prep : Prep ;
+    from_Prep : Prep ;
+    he_Pron : Pron human ;
+    here_Adv : Adv verb;
+--    here7to_Adv : Adv verb; -- to here
+--    here7from_Adv : Adv verb;  -- from here
+    -- how_IAdv : IAdv ;
+    -- how8many_IDet : IDet ;
+    -- how8much_IAdv : IAdv ;
+    i_Pron : Pron human ;
+    -- if_Subj : Subj ;
+    in8front_Prep : Prep ; -- in front of
+    in_Prep : Prep ;
+    it_Pron : Pron nonhuman ;
+    -- less_CAdv : CAdv ;
+    many_Det : Det general ;
+    --  more_CAdv : CAdv ;
+    --most_Predet : Predet ;
+    much_Det : Det mass;
+    must_VV : VV human ;
+  ---b  no_Phr : Phr ;
+    -- no_Utt : Utt ;
+    on_Prep : Prep ;
+  ---  one_Quant : QuantSg ; DEPRECATED
+    -- only_Predet : Predet ;
+    -- or_Conj : Conj ;
+    -- otherwise_PConj : PConj ;
+    part_Prep : Prep ;
+    -- please_Voc : Voc ;
+    possess_Prep : Prep ; -- of (possessive)
+    -- quite_Adv : AdA ;
+    she_Pron : Pron human ;
+    -- so_AdA : AdA ;
+    someSg_Det : Det general ;
+    somePl_Det : Det general ;
+    somebody_NP : NP human ;
+    something_NP : NP nonhuman ;
+    somewhere_Adv : Adv verb;
+    -- that_Quant : Quant ;
+    -- that_Subj : Subj ;
+    there_Adv : Adv verb;
+    there7to_Adv : Adv verb; -- to there
+    there7from_Adv : Adv verb; -- from there
+    -- therefore_PConj : PConj ;
+    they_Pron : Pron human ; 
+    -- this_Quant : Quant ;
+    through_Prep : Prep ;
+    to_Prep : Prep ;
+    -- too_AdA : AdA ;
+    under_Prep : Prep ;
+    -- very_AdA : AdA ;
+    want_VV : VV human ;
+    we_Pron : Pron human ;
+    -- whatPl_IP : IP ; -- what (plural)
+    -- whatSg_IP : IP ; -- what (singular)
+    -- when_IAdv : IAdv ;
+    -- when_Subj : Subj ;
+    -- where_IAdv : IAdv ;
+    -- which_IQuant : IQuant ;
+    -- whoPl_IP : IP ;  -- who (plural)
+    -- whoSg_IP : IP ;  -- who (singular)
+    -- why_IAdv : IAdv ;
+    with_Prep : Prep ;
+    without_Prep : Prep ;
+  ---b  yes_Phr : Phr ;
+    -- yes_Utt : Utt ;
+    youSg_Pron : Pron human ; -- you (singular)
+    youPl_Pron : Pron human ; -- you (plural)
+    youPol_Pron : Pron human ; -- you (polite)
+      
+    -- no_Quant : Quant ; 
+    -- not_Predet : Predet ;
+    -- if_then_Conj : Conj ;
+    -- at_least_AdN : AdN ;
+    -- at_most_AdN : AdN ;
+    nobody_NP : NP human;
+    nothing_NP : NP nonhuman;
+    except_Prep : Prep ;
+
+    -- as_CAdv : CAdv ;
+      
+    have_V2 : V2 animate general ;
+
+    theSg_Det : Det general ;
+    thePl_Det : Det general ;
+    aSg_Det : Det general ;
+    aPl_Det : Det general ;
+
+    iff_Conj : Conj ;
+    member_N : N human ;
+    tautology_N : N nonhuman ;
+    club_N : N nonhuman ;
+    of_Prep : Prep ;
 }

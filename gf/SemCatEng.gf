@@ -1,5 +1,1 @@
-concrete SemCatEng of Cat = {
-  param
-    NounClass = Human | Animate | Inanimate | Mass ;
-    
-}
+concrete SemCatEng of SemCat = SemCatI with (Cat=CatEng) ;

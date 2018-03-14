@@ -1,0 +1,1 @@
+concrete SemCatGer of SemCat = SemCatI with (Cat=CatGer) ;

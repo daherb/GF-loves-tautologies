@@ -4,14 +4,19 @@ abstract SemCat = {
     AdvClass;
     A NounClass;
     A2 NounClass NounClass;
-    Interj;
     Adv AdvClass;
     AP NounClass;
+    Cl ;
+    CN NounClass;
+    Conj ;
+    Det NounClass ;
     N NounClass;
     N2 NounClass NounClass;
     N3 NounClass NounClass NounClass;
     NP NounClass;
     PN;
+    Prep;
+    Pron NounClass;
     V NounClass;
     VA NounClass;
     VQ NounClass;
@@ -22,14 +27,15 @@ abstract SemCat = {
     V2S NounClass NounClass;
     V2V NounClass NounClass;
     V3 NounClass NounClass NounClass ;
+    VV NounClass ;
     CompatibleNounClass NounClass NounClass NounClass;
---    VePhrase;
   fun
     animate : NounClass ;
     inanimate : NounClass ;
     human : NounClass ;
     nonhuman : NounClass ;
     mass : NounClass ;
+    nonmass : NounClass ;
     count : NounClass ;
     masscount : NounClass;
     general : NounClass ;
@@ -39,7 +45,7 @@ abstract SemCat = {
     liquidmasscount : NounClass;
     liquidmasscountIsLiquidmass : N liquidmasscount -> N liquidmass;
     liquidmasscountIsLiquidcount : N liquidmasscount -> N liquidcount;
-    liquidmassIsLiquid : N  liquidmass -> N liquid ;
+    liquidmassIsLiquid : N liquidmass -> N liquid ;
     liquidcountIsLiquid : N liquidcount -> N liquid ;
     liquidIsInanimate : N liquid -> N inanimate;
     liquidmassIsMass : N liquidmass -> N mass;
@@ -55,9 +61,16 @@ abstract SemCat = {
     inanimateIsNonhuman : N inanimate -> N nonhuman ;
     massIsNonhuman : N mass -> N nonhuman ;
     countIsNonhuman : N count -> N nonhuman ;
-    liquidIsNonhuma : N liquid -> N nonhuman;
+    liquidIsNonhuman : N liquid -> N nonhuman;
+    animateIsNonmass : N animate -> N nonmass ;
+    inanimateIsNonmass : N inanimate -> N nonmass ;
+    humanIsNonmass : N human -> N nonmass ;
+    nonhumanIsNonmass : N nonhuman -> N nonmass ;
+    countIsNonmass : N count -> N nonmass ;
+    liquidIsNonmass : N liquid -> N nonmass ;
+    liquidcountIsNonmass : N liquidcount -> N nonmass ;
     sent : AdvClass;
     verb : AdvClass;
     sameIsCompatible : (c: NounClass) -> CompatibleNounClass c c c;
-
+    
 }

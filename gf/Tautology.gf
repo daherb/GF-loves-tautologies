@@ -1,76 +1,38 @@
 --# -path=/home/herb/src/foreign/GF.git/lib/src/api:/home/herb/src/foreign/GF.git/lib/src/abstract
-abstract Tautology = SemCat, SemLex ** {
+abstract Tautology = SemCat, SemLex ** open Prelude in {
   flags
-    startcat = Tautology ;
-  cat Tautology; AdvP; MN;
+    startcat = STautology;
+  cat Tautology; STautology;
   fun
-    IndefAdjN : (ac: NounClass) -> (nc: NounClass) -> (npc : NounClass) -> CompatibleNounClass ac nc npc -> A ac -> N nc -> NP npc;
-    DefAdjN : (ac: NounClass) -> (nc: NounClass) -> (npc : NounClass) -> CompatibleNounClass ac nc npc -> A ac -> N nc -> NP npc;
-    -- DefAdjMN : A -> MN -> NP ;
-    -- AdjMN : A -> MN -> NP ;
-    IndefN : (nc : NounClass) -> N nc -> NP nc;
-    DefN : (nc : NounClass) -> N nc -> NP nc;
-    -- DefMN : MN -> NP ;
-    -- MassMN : MN -> NP ;
-    -- CompN : N -> N -> N ;
-    -- AdvNP : AdvP -> NP -> NP ;
-    -- PrepAdv : Prep -> NP -> AdvP ;
-    -- Cl1	: NP -> A -> Cl;
-    -- Cl2 : NP -> A -> NP -> Cl;
-    -- -- Cl3 : NP -> A2 -> NP -> Cl;
-    -- -- Cl4 : NP -> AP -> Cl ;
-    -- Cl5 : NP -> NP -> Cl ;
-    -- Cl6 : NP -> N -> Cl ;
-    -- -- Cl7 : NP -> CN -> Cl ;	
-    -- Cl8 : NP -> Adv -> Cl ;
-    -- TautEq: NP -> Tautology ;
-    -- Taut1 : Cl -> Tautology ;
-    -- Taut2 : Cl -> Tautology ;
-    -- Taut3 : Cl -> Tautology ;
-    -- Taut4a : Cl -> Tautology ;
-    -- Taut4b : Cl -> Tautology ;
-    -- Taut5 : Cl -> Tautology ;
-    -- Taut6a : Cl -> Cl -> Tautology ;
-    -- Taut6b : Cl -> Cl -> Tautology ;
-    -- Taut6c : Cl -> Cl -> Tautology ;
-    -- Taut8a : Cl -> Cl -> Cl -> Tautology ;
-    -- Taut8b : Cl -> Cl -> Cl -> Tautology ;
-    -- iff_Conj : Conj ;
-    -- member_N : N ;
-    -- tautology_N : N ;
-    -- club_N : N ;
-    -- of_Prep : Prep ;
-    -- art_MN : MN ;
-    -- blood_MN : MN ;
-    -- dust_MN : MN ;
-    -- earth_MN : MN ;
-    -- fat_MN : MN ;
-    -- gold_MN : MN ;
-    -- grass_MN : MN ;
-    -- guts_MN : MN ;
-    -- ice_MN : MN ;
-    -- industry_MN : MN ;
-    -- iron_MN : MN ;
-    -- leather_MN : MN ;
-    -- love_MN : MN ;
-    -- meat_MN : MN ;
-    -- milk_MN : MN ;
-    -- music_MN : MN ;
-    -- oil_MN : MN ;
-    -- peace_MN : MN ;
-    -- plastic_MN : MN ;
-    -- rain_MN : MN ;
-    -- rubber_MN : MN ;
-    -- salt_MN : MN ;
-    -- sand_MN : MN ;
-    -- science_MN : MN ;
-    -- sea_MN : MN ;
-    -- silver_MN : MN ;
-    -- skin_MN : MN ;
-    -- smoke_MN : MN ;
-    -- snow_MN : MN ;
-    -- steel_MN : MN ;
-    -- water_MN : MN ;
-    -- wind_MN : MN ;
-    -- wood_MN : MN ;
+    UseN : (nc: NounClass) -> N nc -> CN nc ;
+    DetAdjN : (dc : NounClass) -> (ac: NounClass) -> (nc: NounClass) -> (npc : NounClass) -> (npc2 : NounClass) -> CompatibleNounClass dc nc npc -> CompatibleNounClass ac nc npc2 -> Det dc -> A ac -> CN nc -> NP npc2;
+    DetN : (dc : NounClass) -> (nc : NounClass) -> (npc : NounClass) -> CompatibleNounClass dc nc npc -> Det dc -> CN nc -> NP npc;
+    MassN : (N mass) -> NP mass ;
+    PrepNP : (nc : NounClass) -> (nc2 : NounClass) -> NP nc -> Prep -> NP nc2 -> NP nc ;
+    
+    Cl1	: (nc : NounClass) -> (ac : NounClass) -> (npc : NounClass) -> CompatibleNounClass ac nc npc -> NP nc -> A ac -> Cl; -- he is old
+    Cl2 : (nc : NounClass) -> (ac : NounClass) -> (nc2 : NounClass) -> (npc : NounClass) -> (npc2 : NounClass) -> (npc3 : NounClass) -> CompatibleNounClass ac nc npc -> CompatibleNounClass ac nc2 npc2 -> CompatibleNounClass nc nc2 npc3 -> NP nc -> A ac -> NP nc2 -> Cl; -- he is older than her
+    -- Cl3 : NP -> A2 -> NP -> Cl;
+    -- Cl4 : NP -> AP -> Cl ;
+    Cl5 : (nc : NounClass) -> (nc2 : NounClass) -> (npc : NounClass) -> CompatibleNounClass nc nc2 npc -> NP nc -> NP nc2 -> Cl ; -- she is the woman
+    Cl6 : (nc : NounClass) -> (nc2 : NounClass) -> (npc : NounClass) -> CompatibleNounClass nc nc2 npc -> NP nc-> CN nc2 -> Cl ;
+    -- Cl7 : NP -> CN -> Cl ;	
+    Cl8 : (nc : NounClass) -> NP nc -> Adv verb -> Cl ;
+
+    TautEq: (nc : NounClass) -> NP nc -> Tautology ;
+    Taut1 : Cl -> Tautology ;
+    Taut2 : Cl -> Tautology ;
+    Taut3 : Cl -> Tautology ;
+    Taut4a : Cl -> Tautology ;
+    Taut4b : Cl -> Tautology ;
+    Taut5 : Cl -> Tautology ;
+    Taut6a : Cl -> Cl -> Tautology ;
+    Taut6b : Cl -> Cl -> Tautology ;
+    Taut6c : Cl -> Cl -> Tautology ;
+    Taut8a : Cl -> Cl -> Cl -> Tautology ;
+    Taut8b : Cl -> Cl -> Cl -> Tautology ;
+
+    CompN : (nc : NounClass) -> (nc2 : NounClass) -> N nc -> N nc2 -> CN nc2 ;
+
+    PrintTaut : Tautology -> STautology ;
 }
