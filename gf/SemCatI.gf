@@ -60,4 +60,5 @@ incomplete concrete SemCatI of SemCat = open Cat in {
     sameIsCompatible _ = "" ;
   oper
     idN : Cat.N -> Cat.N = \n -> n ;
+    idN2 : Cat.N2 -> Cat.N = \n -> lin N { n = n.n ; s = n.s ; g = n.g ; co = n.co ; uncap = n. uncap } ;
 }

@@ -5,6 +5,8 @@ incomplete concrete TautologyI of Tautology = SemCat ** open Syntax, Prelude in 
   lin
     -- UseN : (nc: NounClass) -> N nc -> CN nc ;
     UseN _ = idN ;
+    -- UseN2 : (nc: NounClass) -> (nc2: NounClass) -> N2 nc nc2 -> N nc ;
+    UseN2 _ _ = idN2 ;
     -- DetAdjN : (dc : NounClass) -> (ac: NounClass) -> (nc: NounClass) -> (npc : NounClass) -> (npc2 : NounClass) -> CompatibleNounClass dc nc npc -> CompatibleNounClass ac nc npc2 -> Det dc -> A ac -> CN nc -> NP npc2;
     DetAdjN _ _ _ _ _ _ _ det a n = mkNP det (mkCN a n) ;
     -- DetN : (dc : NounClass) -> (nc : NounClass) -> (npc : NounClass) -> CompatibleNounClass dc nc npc -> Det dc -> CN nc -> NP npc;

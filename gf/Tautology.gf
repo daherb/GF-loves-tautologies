@@ -5,6 +5,7 @@ abstract Tautology = SemCat, SemLex ** open Prelude in {
   cat Tautology; STautology;
   fun
     UseN : (nc: NounClass) -> N nc -> CN nc ;
+    UseN2 : (nc: NounClass) -> (nc2: NounClass) -> N2 nc nc2 -> N nc ;
     DetAdjN : (dc : NounClass) -> (ac: NounClass) -> (nc: NounClass) -> (npc : NounClass) -> (npc2 : NounClass) -> CompatibleNounClass dc nc npc -> CompatibleNounClass ac nc npc2 -> Det dc -> A ac -> CN nc -> NP npc2;
     DetN : (dc : NounClass) -> (nc : NounClass) -> (npc : NounClass) -> CompatibleNounClass dc nc npc -> Det dc -> CN nc -> NP npc;
     MassN : (N mass) -> NP mass ;
