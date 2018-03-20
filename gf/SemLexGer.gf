@@ -1,8 +1,110 @@
-concrete SemLexGer of SemLex = SemCatGer ** SemLexI with (Lexicon=LexiconGer), (Structural=StructuralGer), (Syntax=SyntaxGer) ** open (P=ParadigmsGer), ExtensionsGer, ResGer in {
+concrete SemLexGer of SemLex = SemCatGer ** SemLexI-[apartment_N,ashes_N,bank_N,bark_N,boat_N,boy_N,cat_N,cap_N,child_N,church_N,cloud_N,country_N,cousin_N,day_N,doctor_N,dog_N,eye_N,flower_N,horse_N,king_N,lamp_N,language_N,louse_N,love_N,man_N,moon_N,mountain_N,name_N,newspaper_N,nose_N,number_N,peace_N,person_N,planet_N,policeman_N,queen_N,religion_N,road_N,school_N,science_N,sea_N,seed_N,sheep_N,shirt_N,snake_N,sock_N,star_N,student_N,sun_N,television_N,tongue_N,university_N,war_N,wife_N,woman_N,year_N] with (Lexicon=LexiconGer), (Structural=StructuralGer), (Syntax=SyntaxGer) ** open (P=ParadigmsGer), ResGer in {
   lin
     iff_Conj = lin Conj {s1 = "genau dann wenn" ; s2 = "dann" ; n = Sg} ;
     member_N = P.reg1N "Mitglied" Neutr ;
     tautology_N = P.reg1N "Tautologie" Fem ;
     club_N = P.regN "Klub" ;
     of_Prep = P.mkPrep "" (NPC Gen);
+    apartment_N = fixCo Lexicon.apartment_N "Wohnungs" ;
+    ashes_N = fixCo Lexicon.ashes_N ("Asche" | "Aschen") ;
+    bank_N = fixCo Lexicon.bank_N ("Bank" | "Banken" );
+    bark_N = fixCo Lexicon.bark_N "Rinden" ;
+    boat_N = fixCo Lexicon.boat_N "Boots" ;
+    boy_N = fixCo Lexicon.boy_N "Jungen" ;
+    cat_N = fixCo Lexicon.cat_N "Katzen" ;
+    cap_N = fixCo Lexicon.cap_N "Mützen" ;
+    child_N = fixCo Lexicon.child_N "Kinder" ;
+    church_N = fixCo Lexicon.church_N "Kirchen" ;
+    cloud_N = fixCo Lexicon.cloud_N "Wolken" ;
+    country_N = fixCo Lexicon.country_N "Landes" ;
+    cousin_N = fixCo Lexicon.cousin_N "Vettern" ;
+    day_N = fixCo Lexicon.day_N "Tages" ;
+    doctor_N = fixCo Lexicon.doctor_N  ( "Arzt" | "Ärzte" ) ;
+    dog_N = fixCo Lexicon.dog_N "Hunde" ;
+    eye_N = fixCo Lexicon.eye_N "Augen" ;
+    flower_N = fixCo Lexicon.flower_N "Blumen" ;
+    horse_N = fixCo Lexicon.horse_N "Pferde" ;
+    king_N = fixCo Lexicon.king_N ("König" | "Königs" );
+    lamp_N = fixCo Lexicon.lamp_N "Lampen" ;
+    language_N = fixCo Lexicon.language_N "Sprach" ;
+    louse_N = fixCo Lexicon.louse_N ("Lause" | "Laus" );
+    love_N = fixCo Lexicon.love_N "Liebes" ;
+    man_N = fixCo Lexicon.man_N "Mannes" ;
+    moon_N = fixCo Lexicon.moon_N ( "Mond" | "Mondes") ;
+    mountain_N = fixCo Lexicon.mountain_N ("Berg" | "Berges") ;
+    name_N = fixCo Lexicon.name_N "Namens" ;
+    newspaper_N = fixCo Lexicon.newspaper_N "Zeitungs" ;
+    nose_N = fixCo Lexicon.nose_N "Nasen" ;
+    number_N = fixCo Lexicon.number_N "Zahlen" ;
+    peace_N = fixCo Lexicon.peace_N "Friedens" ;
+    person_N = fixCo Lexicon.person_N "Personen" ;
+    planet_N = fixCo Lexicon.planet_N "Planeten" ;
+    policeman_N = fixCo Lexicon.policeman_N "Polizisten" ;
+    queen_N = fixCo Lexicon.queen_N "Königinen" ;
+    religion_N = fixCo Lexicon.religion_N "Religions" ;
+    road_N = fixCo Lexicon.road_N "Straßen" ;
+    school_N = fixCo Lexicon.school_N "Schul" ;
+    science_N = fixCo Lexicon.science_N "Wissenschafts" ;
+    sea_N = fixCo Lexicon.sea_N "Meeres" ;
+    seed_N = fixCo Lexicon.seed_N "Samen" ;
+    sheep_N = fixCo Lexicon.sheep_N "Schafs" ;
+    shirt_N = fixCo Lexicon.shirt_N ("Hemd" | "Hemds") ;
+    snake_N = fixCo Lexicon.snake_N "Schlangen" ;
+    sock_N = fixCo Lexicon.sock_N "Socken" ;
+    star_N = fixCo Lexicon.star_N "Sternen" ;
+    student_N = fixCo Lexicon.student_N "Studenten" ;
+    sun_N = fixCo Lexicon.sun_N "Sonnen" ;
+    television_N = fixCo Lexicon.television_N "Fernseh" ;
+    tongue_N = fixCo Lexicon.tongue_N "Zungen" ;
+    university_N = fixCo Lexicon.university_N "Universitäts" ;
+    war_N = fixCo Lexicon.war_N "Kriegs" ;
+    wife_N = fixCo Lexicon.wife_N "Ehefrauen" ;
+    woman_N = fixCo Lexicon.woman_N "Frauen" ;
+    year_N = fixCo Lexicon.year_N "Jahres" ;
+  oper
+    fixCo : SemCatGer.N -> Str -> SemCatGer.N = \n,s ->
+      lin N {
+	   n = n.n ;
+	   s = n.s ;
+	   g = n.g ;
+	   co = s ;
+	   uncap = {
+	     n = n.uncap.n ;
+	     s = n.uncap.s ;
+	     g = n.uncap.g ;
+	     co = toLower s ;
+	     }
+	   } ;
+    toLower : Str -> Str = \s ->
+      case s of {
+	"A" + r => "a" + r ;
+	"B" + r => "b" + r ;
+	"C" + r => "c" + r ;
+	"D" + r => "d" + r ;
+	"E" + r => "e" + r ;
+	"F" + r => "f" + r ;
+	"G" + r => "g" + r ;
+	"H" + r => "h" + r ;
+	"I" + r => "i" + r ;
+	"J" + r => "j" + r ;
+	"K" + r => "k" + r ;
+	"L" + r => "l" + r ;
+	"M" + r => "m" + r ;
+	"N" + r => "n" + r ;
+	"O" + r => "o" + r ;
+	"P" + r => "p" + r ;
+	"Q" + r => "q" + r ;
+	"R" + r => "r" + r ;
+	"S" + r => "s" + r ;
+	"T" + r => "t" + r ;
+	"U" + r => "u" + r ;
+	"V" + r => "v" + r ;
+	"W" + r => "w" + r ;
+	"X" + r => "z" + r ;
+	"Y" + r => "y" + r ;
+	"Z" + r => "x" + r ;
+	"Ä" + r => "ä" + r ;
+	"Ö" + r => "ö" + r ;
+	"Ü" + r => "ü" + r
+      } ;
 }

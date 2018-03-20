@@ -53,6 +53,8 @@ concrete TautologyGer of Tautology = SemLexGer ** TautologyI with (SemCat=SemCat
       mkS iff_Conj (mkS or_Conj s1 (mkS and_Conj s2 s3)) (mkS and_Conj (mkS or_Conj s1 s2) (mkS or_Conj s1 s3)) ;
 
     CompN _ _ n n2 = lin N { s = \\num,c => n.co ++ BIND ++ n2.uncap.s ! num ! c ; co = n.co ++ BIND ++ n2.uncap.s ! Sg ! Nom ; g = n2.g ;
-		       uncap = { s = \\num,c => n.uncap.s ! num ! c ++ BIND ++ n2.uncap.s ! num ! c ; co = n.uncap.s ! Sg ! Nom ++ BIND ++ n2.uncap.s ! Sg ! Nom } } ;
+    			     uncap = { s = \\num,c => n.uncap.s ! num ! c ++ BIND ++ n2.uncap.s ! num ! c ; co = n.uncap.s ! Sg ! Nom ++ BIND ++ n2.uncap.s ! Sg ! Nom } } ;	    
+
     PrintTaut t = ss (t.s ! Main ) ;
+
 }
